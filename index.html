@@ -364,12 +364,12 @@
 
 <!-- ============ 1. HERO ============ -->
 <section class="hero" id="inicio">
-  <img class="deco-sparkle" src="estrella_naranja.png" alt="" style="top:8%; left:2%; width:70px; animation:flotar 6s ease-in-out infinite;">
-  <img class="deco-sparkle" src="estrella_turquesa.png" alt="" style="top:60%; left:6%; width:36px; animation:flotar 5s ease-in-out infinite .5s;">
+  <img class="deco-sparkle" src="estrella_naranja.png" alt="" style="top:8%; left:2%; width:70px; animation:flotar 6s ease-in-out infinite;" viewBox="0 0 100 100"><path fill="#ffb719" d="M50 0 C55 35 65 45 100 50 C65 55 55 65 50 100 C45 65 35 55 0 50 C35 45 45 35 50 0 Z"/>
+  <img class="deco-sparkle" src="estrella_turquesa.png" alt="" style="top:60%; left:6%; width:36px; animation:flotar 5s ease-in-out infinite .5s;" viewBox="0 0 100 100"><path fill="#03cfcb" d="M50 0 C55 35 65 45 100 50 C65 55 55 65 50 100 C45 65 35 55 0 50 C35 45 45 35 50 0 Z"/>
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow">Comunidad para creadoras</span>
-      <h1> A brillar también se<span class="accent">aprende</span>,<br>y se hace mejor acompañadas.</h1>
+      <h1>A brillar también se<span class="accent">aprende</span>,<br>y se hace mejor acompañadas.</h1>
       <p class="lead">Una comunidad para mujeres que quieren construir una marca personal auténtica, crear contenido con propósito y hacer crecer su emprendimiento sin dejar de ser ellas mismas.</p>
       <div class="hero-ctas">
         <a class="btn btn-fucsia" href="https://forms.gle/Xioj4iFq7XvxXEpS6" target="_blank" rel="noopener">
@@ -382,9 +382,9 @@
     </div>
     <div class="hero-art">
       <div class="blob" style="width:100%; height:100%; background:var(--fucsia-suave); opacity:.35;"></div>
-      <img src="estrella_fucsia.png" alt="" style="position:absolute; inset:0; margin:auto; width:78%; height:auto; animation:girar-suave 22s linear infinite;">
-      <img src="estrella_naranja.png" alt="" style="position:absolute; top:8%; right:6%; width:22%; height:auto;">
-      <img src="estrella_turquesa.png" alt="" style="position:absolute; bottom:10%; left:4%; width:16%; height:auto;">
+      <svg style="position:absolute; inset:0; margin:auto; width:78%; animation:girar-suave 22s linear infinite;" viewBox="0 0 100 100"><path fill="#e00d5b" d="M50 0 C55 35 65 45 100 50 C65 55 55 65 50 100 C45 65 35 55 0 50 C35 45 45 35 50 0 Z"/></svg>
+      <svg style="position:absolute; top:8%; right:6%; width:22%;" viewBox="0 0 100 100"><path fill="#ffb719" d="M50 0 C55 35 65 45 100 50 C65 55 55 65 50 100 C45 65 35 55 0 50 C35 45 45 35 50 0 Z"/></svg>
+      <svg style="position:absolute; bottom:10%; left:4%; width:16%;" viewBox="0 0 100 100"><path fill="#03cfcb" d="M50 0 C55 35 65 45 100 50 C65 55 55 65 50 100 C45 65 35 55 0 50 C35 45 45 35 50 0 Z"/></svg>
     </div>
   </div>
 </section>
@@ -460,7 +460,7 @@
       <span class="fecha">Viernes de destello ✨ 3 de Julio 2026 </span>
       <h3>Ahí está tu contenido. Siempre ha estado ahí</h3>
       <div class="blog-item">
-        <span class="label"><img src="estrella_turquesa.png" alt="" style="width:14px; height:14px; vertical-align:-1px; margin-right:2px;"> Reflexión</span>
+        <span class="label">✦ Reflexión</span>
         <p>Hay algo que pasa todos los días en tu vida y que sin darte cuenta ya es contenido.</p>
         <p>La conversación con una clienta que te hizo ver algo diferente. El error que cometiste y lo que aprendiste de él. La decisión que tomaste y por qué. El proceso detrás de algo que para ti ya es rutina pero que para alguien más es completamente nuevo.</p>
         <p>Todo eso tiene valor. Muchísimo valor.</p>
@@ -469,12 +469,12 @@
         <p>Ahí está tu contenido. Siempre ha estado ahí. ✨</p>
       </div>
       <div class="blog-item">
-        <span class="label"><img src="estrella_turquesa.png" alt="" style="width:14px; height:14px; vertical-align:-1px; margin-right:2px;"> Idea de contenido de la semana</span>
+        <span class="label">✦ Idea de contenido de la semana</span>
         <p>Piensa en algo que hiciste esta semana en tu trabajo o en tu vida que te pareció completamente normal. Graba un video explicándolo como si se lo contaras a alguien que apenas empieza.</p>
         <p>Hook: “Esto que hago todos los días quizás no es tan obvio como crees…”</p>
       </div>
       <div class="blog-item" style="margin-bottom:0;">
-        <span class="label"><img src="estrella_turquesa.png" alt="" style="width:14px; height:14px; vertical-align:-1px; margin-right:2px;"> La Pregunta</span>
+        <span class="label">✦ La Pregunta</span>
         <p>¿Qué parte de tu experiencia o conocimiento has descartado como contenido porque creías que era demasiado obvio o sencillo?</p>
       </div>
     </div>
@@ -546,9 +546,7 @@
 <script>
   // ---- ICONO SPARKLE REUTILIZABLE ----
   function sparkleSVG(color){
-    const map = {'#e00d5b':'estrella_fucsia.png', '#03cfcb':'estrella_turquesa.png', '#ffb719':'estrella_naranja.png'};
-    const src = map[color] || 'estrella_fucsia.png';
-    return `<img class="bullet-icon" src="${src}" alt="">`;
+    return `<svg class="bullet-icon" viewBox="0 0 100 100"><path fill="${color}" d="M50 0 C55 35 65 45 100 50 C65 55 55 65 50 100 C45 65 35 55 0 50 C35 45 45 35 50 0 Z"/></svg>`;
   }
 
   // ---- SECCION 3: LISTAS ----
@@ -607,17 +605,15 @@
       <a class="btn btn-outline" style="padding:10px 20px; font-size:.85rem;" href="#">Descargar</a>
     </div>`).join('');
   function sparkleSVGBig(color){
-   const map = {'#e00d5b':'estrella_fucsia.png', '#03cfcb':'estrella_turquesa.png', '#ffb719':'estrella_naranja.png'};
-    const src = map[color] || 'estrella_fucsia.png';
-    return `<img class="recurso-icono" src="${src}" alt="">`;
+    return `<svg class="recurso-icono" viewBox="0 0 100 100"><path fill="${color}" d="M50 0 C55 35 65 45 100 50 C65 55 55 65 50 100 C45 65 35 55 0 50 C35 45 45 35 50 0 Z"/></svg>`;
   }
 
   // ---- SECCION 8: INTEGRANTES ----
   const integrantes = [
     {nombre:"Elena Peña", rol:"Creadora de contenido + Asesora de Marca Personal + Emprendedora", bio:"Ayudo a mujeres a descubrir quiénes son, comunicar el valor de lo que hacen y construir proyectos auténticos y sostenibles.", servicios:["Sesiones 1:1","Sesiones grupales","Talleres"], color:"#e00d5b"},
-    {nombre:"Alondra", rol:"Creadora de contenido", bio:"En progreso...", servicios:["En progreso..."], color:"#03cfcb"},
+    {nombre:"Juli Castro", rol:"Creadora de contenido + Storyteller + Creadora de El Universo de Juli", bio:"Comparto historias y reflexiones que inspiran a las personas a volver a creer en sus sueños, mientras documento mi vida, los viajes, el deporte, el crecimiento personal y los pequeños momentos que nos transforman.", servicios:[""], color:"#03cfcb"},
+    {nombre:"Alondra", rol:"Creadora de contenido", bio:"En progreso...", servicios:["En progreso..."], color:"#ffb719"},
     {nombre:"Monse", rol:"Creadora de contenido", bio:"En progreso...", servicios:["En progreso..."], color:"#ffb719"}
-    {nombre:"Julisa Claireth", rol:"Creadora de contenido", bio:"En progreso...", servicios:["En progreso..."], color:"#ffb719"}
   ];
   document.getElementById('integrantes-grid').innerHTML = integrantes.map(i=>`
     <div class="integrante-card">
