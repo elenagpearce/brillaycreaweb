@@ -25,7 +25,7 @@ const DESTELLOS = [
   {
     fecha: "2026-07-03",
     fechaDisplay: "3 de julio 2026",
-    imagen: "destellos/destello20260703.jpg",
+    imagen: "destellos/destello20260703.jpeg",
     titulo: "Ahí está tu contenido. Siempre ha estado ahí",
     reflexion: [
       "Hay algo que pasa todos los días en tu vida y que sin darte cuenta ya es contenido.",
