@@ -250,6 +250,17 @@
   .blog-item .label img{ flex:none; }
   .blog-item p{ margin:4px 0 0; line-height:1.5; }
   .blog-side p{ font-size:1.1rem; line-height:1.7; color:var(--crema); }
+  .destello-imagen{
+    width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:18px; border:3px solid var(--negro);
+    margin-bottom:22px; background:#e9e8c4;
+  }
+  .destello-imagen.placeholder{
+    display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif;
+    font-size:.75rem; letter-spacing:1.5px; text-transform:uppercase; color:#8a8a5f; text-align:center; padding:20px;
+  }
+  .destello-acciones{ display:flex; gap:12px; flex-wrap:wrap; margin-top:26px; }
+  .btn-compartir{ padding:12px 22px; font-size:.88rem; }
+  .destello-share-nota{ font-family:'Montserrat',sans-serif; font-size:.75rem; color:#8a8a5f; margin-top:10px; }
 
   /* ---------- SECCION 7: INSTAGRAM ---------- */
   .insta-section{
@@ -353,7 +364,7 @@
       <li><a href="#comunidad">Comunidad</a></li>
       <li><a href="#eventos">Eventos</a></li>
       <li><a href="#recursos">Recursos</a></li>
-      <li><a href="#blog">Blog</a></li>
+      <li><a href="#destello">Destello</a></li>
       <li><a href="#integrantes">Integrantes</a></li>
       <li><a href="#faq">Preguntas</a></li>
     </ul>
@@ -365,8 +376,8 @@
 
 <!-- ============ 1. HERO ============ -->
 <section class="hero" id="inicio">
-  <img class="deco-sparkle" src="estrella_naranja.png" alt="" style="top:8%; left:2%; width:70px; animation:flotar 6s ease-in-out infinite;" viewBox="0 0 100 100"><path fill="#ffb719" d="M50 0 C55 35 65 45 100 50 C65 55 55 65 50 100 C45 65 35 55 0 50 C35 45 45 35 50 0 Z"/>
-  <img class="deco-sparkle" src="estrella_turquesa.png" alt="" style="top:60%; left:6%; width:36px; animation:flotar 5s ease-in-out infinite .5s;" viewBox="0 0 100 100"><path fill="#03cfcb" d="M50 0 C55 35 65 45 100 50 C65 55 55 65 50 100 C45 65 35 55 0 50 C35 45 45 35 50 0 Z"/>
+  <img class="deco-sparkle" src="estrella_naranja.png" alt="" style="top:8%; left:2%; width:70px; animation:flotar 6s ease-in-out infinite;">
+  <img class="deco-sparkle" src="estrella_turquesa.png" alt="" style="top:60%; left:6%; width:36px; animation:flotar 5s ease-in-out infinite .5s;">
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow">Comunidad para creadoras</span>
@@ -448,36 +459,17 @@
   </div>
 </section>
 
-<!-- ============ 6. BLOG ============ -->
-<section class="blog-section" id="blog">
+<!-- ============ 6. DESTELLO ============ -->
+<section class="blog-section" id="destello">
   <div class="wrap blog-grid">
     <div class="blog-side">
       <span class="eyebrow">Cada viernes</span>
       <h2>Viernes de Destello</h2>
       <p>Una entrega semanal para cerrar la semana con inspiración: una reflexión, una idea de contenido lista para grabar y una pregunta que te deja pensando.</p>
-      <a class="btn btn-negro" href="#" style="margin-top:10px;">Leer todas las entradas</a>
+      <a class="btn btn-negro" href="destellos.html" style="margin-top:10px;">Leer todas las entradas</a>
     </div>
-    <div class="blog-card">
-      <span class="fecha">Viernes de destello ✨ 3 de Julio 2026 </span>
-      <h3>Ahí está tu contenido. Siempre ha estado ahí</h3>
-      <div class="blog-item">
-        <span class="label"><img src="estrella_turquesa.png" alt="" style="width:14px; height:14px;"> Reflexión</span>
-        <p>Hay algo que pasa todos los días en tu vida y que sin darte cuenta ya es contenido.</p>
-        <p>La conversación con una clienta que te hizo ver algo diferente. El error que cometiste y lo que aprendiste de él. La decisión que tomaste y por qué. El proceso detrás de algo que para ti ya es rutina pero que para alguien más es completamente nuevo.</p>
-        <p>Todo eso tiene valor. Muchísimo valor.</p>
-        <p>El problema es que cuando llevamos tiempo haciendo lo que hacemos, empezamos a creer que lo que sabemos es obvio. Que no vale la pena compartirlo porque “cualquiera lo sabe.” Pero no cualquiera lo sabe. Lo sabes tú, porque lo has vivido, porque lo has practicado, porque lo has construido con el tiempo.</p>
-        <p>Tu experiencia cotidiana es tu mayor fuente de contenido. No necesitas buscar temas complicados ni tendencias del momento. Solo necesitas voltear a ver lo que ya estás viviendo y preguntarte: ¿qué hay aquí que alguien más necesita escuchar?</p>
-        <p>Ahí está tu contenido. Siempre ha estado ahí. ✨</p>
-      </div>
-      <div class="blog-item">
-        <span class="label"><img src="estrella_turquesa.png" alt="" style="width:14px; height:14px;"> Idea de contenido de la semana</span>
-        <p>Piensa en algo que hiciste esta semana en tu trabajo o en tu vida que te pareció completamente normal. Graba un video explicándolo como si se lo contaras a alguien que apenas empieza.</p>
-        <p>Hook: “Esto que hago todos los días quizás no es tan obvio como crees…”</p>
-      </div>
-      <div class="blog-item" style="margin-bottom:0;">
-        <span class="label"><img src="estrella_turquesa.png" alt="" style="width:14px; height:14px;"> La Pregunta</span>
-        <p>¿Qué parte de tu experiencia o conocimiento has descartado como contenido porque creías que era demasiado obvio o sencillo?</p>
-      </div>
+    <div class="blog-card" id="destello-featured">
+      <!-- Se llena automáticamente con el Destello más reciente (ver destellos-data.js) -->
     </div>
   </div>
 </section>
@@ -524,7 +516,7 @@
           <li><a href="#que-es">Qué es Brilla &amp; Crea</a></li>
           <li><a href="#eventos">Eventos</a></li>
           <li><a href="#recursos">Recursos gratuitos</a></li>
-          <li><a href="#blog">Viernes de Destello</a></li>
+          <li><a href="#destello">Viernes de Destello</a></li>
           <li><a href="#faq">Preguntas frecuentes</a></li>
         </ul>
       </div>
@@ -544,12 +536,83 @@
   </div>
 </footer>
 
+<script src="destellos-data.js"></script>
 <script>
   // ---- ICONO SPARKLE REUTILIZABLE ----
   function sparkleSVG(color){
     const map = {'#e00d5b':'estrella_fucsia.png', '#03cfcb':'estrella_turquesa.png', '#ffb719':'estrella_naranja.png'};
     const src = map[color] || 'estrella_fucsia.png';
     return `<img class="bullet-icon" src="${src}" alt="">`;
+  }
+
+  // ---- FUNCION COMPARTIR (reutilizada también en destellos.html) ----
+  async function compartirDestello(imagenUrl, titulo, btn){
+    const cuentaIG = '@comunidadbrillaycrea';
+    const textoCompartir = `${titulo} ✨ Viernes de Destello — Brilla & Crea\nSíguenos: ${cuentaIG}`;
+    try{
+      const resp = await fetch(imagenUrl);
+      const blob = await resp.blob();
+      const file = new File([blob], imagenUrl.split('/').pop(), {type: blob.type || 'image/jpeg'});
+      if(navigator.canShare && navigator.canShare({files:[file]})){
+        await navigator.share({ files:[file], title: titulo, text: textoCompartir });
+        return;
+      }
+    }catch(err){ /* seguimos al fallback */ }
+
+    // Fallback: navegadores de escritorio o sin soporte de Web Share con archivos
+    try{
+      await navigator.clipboard.writeText(textoCompartir);
+    }catch(err){ /* portapapeles no disponible, no pasa nada grave */ }
+    const a = document.createElement('a');
+    a.href = imagenUrl;
+    a.download = imagenUrl.split('/').pop();
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    if(btn){
+      const original = btn.textContent;
+      btn.textContent = 'Imagen descargada · texto copiado ✓';
+      setTimeout(()=>{ btn.textContent = original; }, 2600);
+    }
+  }
+
+  function destelloCardHTML(d, opts){
+    opts = opts || {};
+    const imagenHTML = d.imagen
+      ? `<img class="destello-imagen" src="${d.imagen}" alt="${d.titulo}">`
+      : `<div class="destello-imagen placeholder">Imagen del destello<br>próximamente</div>`;
+    return `
+      ${imagenHTML}
+      <span class="fecha">Viernes de destello ✨ ${d.fechaDisplay}</span>
+      <h3>${d.titulo}</h3>
+      <div class="blog-item">
+        <span class="label"><img src="estrella_turquesa.png" alt="" style="width:14px; height:14px;"> Reflexión</span>
+        ${d.reflexion.map(p=>`<p>${p}</p>`).join('')}
+      </div>
+      <div class="blog-item">
+        <span class="label"><img src="estrella_turquesa.png" alt="" style="width:14px; height:14px;"> Idea de contenido</span>
+        <p>${d.idea}</p>
+      </div>
+      <div class="blog-item" style="margin-bottom:0;">
+        <span class="label"><img src="estrella_turquesa.png" alt="" style="width:14px; height:14px;"> La Pregunta</span>
+        <p>${d.pregunta}</p>
+      </div>
+      ${d.imagen ? `
+      <div class="destello-acciones">
+        <button class="btn btn-fucsia btn-compartir" onclick="compartirDestello('${d.imagen}', '${d.titulo.replace(/'/g,"\\'")}', this)">
+          <img src="estrella_blanca.png" alt="" width="16" height="16">
+          Compartir
+        </button>
+      </div>
+      <p class="destello-share-nota">Se abre el menú para compartir de tu celular — elige Instagram y pégalo como historia. El texto con ${'@comunidadbrillaycrea'} ya queda copiado para pegarlo.</p>` : ''}
+    `;
+  }
+
+  // ---- SECCION 6: DESTELLO DESTACADO (el más reciente) ----
+  const destelloFeaturedEl = document.getElementById('destello-featured');
+  if(destelloFeaturedEl && typeof DESTELLOS !== 'undefined' && DESTELLOS.length){
+    const masReciente = [...DESTELLOS].sort((a,b)=> b.fecha.localeCompare(a.fecha))[0];
+    destelloFeaturedEl.innerHTML = destelloCardHTML(masReciente);
   }
 
   // ---- SECCION 3: LISTAS ----

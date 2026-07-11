@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destellos — Brilla &amp; Crea</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=League+Spartan:wght@300;400;500;600;700;800&family=Montserrat:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --crema:#f3f2ba;
+    --crema-suave:#f9f8e0;
+    --fucsia:#e00d5b;
+    --fucsia-suave:#ff6f9e;
+    --naranja:#ffb719;
+    --turquesa:#03cfcb;
+    --negro:#1d1d1b;
+    --blanco:#fffdf6;
+    --sombra: 6px 6px 0px rgba(29,29,27,0.12);
+    --radio: 28px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--crema);
+    color:var(--negro);
+    font-family:'League Spartan', sans-serif;
+    overflow-x:hidden;
+  }
+  h1,h2,h3, .display{
+    font-family:'Bubblegum Sans', cursive;
+    font-weight:400;
+    line-height:1.15;
+    letter-spacing:.5px;
+  }
+  p, li, a, button, input, textarea{
+    font-family:'League Spartan', sans-serif;
+  }
+  .eyebrow{
+    font-family:'Montserrat', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:.72rem;
+    font-weight:600;
+    color:var(--fucsia);
+  }
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  section{position:relative; padding:80px 8vw 110px;}
+  .wrap{max-width:1200px; margin:0 auto; position:relative; z-index:2;}
+  ::selection{background:var(--fucsia); color:var(--blanco);}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:10px; padding:16px 34px; border-radius:999px;
+    font-family:'League Spartan', sans-serif; font-weight:700; font-size:1.02rem; text-decoration:none;
+    border:3px solid var(--negro); cursor:pointer; transition:transform .18s ease, box-shadow .18s ease;
+    box-shadow:var(--sombra); white-space:nowrap;
+  }
+  .btn:hover{transform:translate(-3px,-3px); box-shadow:9px 9px 0px rgba(29,29,27,0.16);}
+  .btn:active{transform:translate(0,0); box-shadow:2px 2px 0px rgba(29,29,27,0.16);}
+  .btn-fucsia{background:var(--fucsia); color:var(--blanco);}
+  .btn-negro{background:var(--negro); color:var(--crema);}
+  .btn-outline{background:transparent; color:var(--negro);}
+
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(243,242,186,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:3px solid var(--negro);
+  }
+  nav{
+    max-width:1300px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 6vw;
+  }
+  .logo-nav{ display:flex; align-items:center; gap:10px; }
+  .logo-nav img{ height:48px; width:auto; }
+  .nav-links{ display:flex; gap:30px; list-style:none; margin:0; padding:0; }
+  .nav-links a{ text-decoration:none; font-weight:600; font-size:.95rem; position:relative; padding-bottom:4px; }
+  .nav-links a::after{ content:''; position:absolute; left:0; bottom:0; height:3px; width:0; background:var(--fucsia); transition:width .25s ease; }
+  .nav-links a:hover::after{ width:100%; }
+  .nav-links a.activo::after{ width:100%; }
+  @media (max-width:980px){ .nav-links{ display:none; } }
+
+  .portada-destellos{ text-align:center; padding-bottom:20px; }
+  .portada-destellos h1{ font-size:clamp(2.4rem,5vw,3.6rem); margin:14px 0 10px; }
+  .portada-destellos p{ max-width:56ch; margin:0 auto; font-size:1.1rem; color:#4d4d47; }
+
+  .destellos-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:40px; margin-top:60px;
+  }
+  .destello-card{
+    background:var(--blanco); border:3px solid var(--negro); border-radius:var(--radio);
+    padding:34px; box-shadow:var(--sombra);
+  }
+  .destello-card .fecha{ font-family:'Montserrat',sans-serif; font-size:.75rem; letter-spacing:2px; text-transform:uppercase; color:var(--fucsia); font-weight:700; }
+  .destello-card h3{ font-size:1.6rem; margin:10px 0 20px; }
+  .destello-item{ margin-bottom:16px; }
+  .destello-item .label{ display:inline-flex; align-items:center; gap:6px; font-weight:700; font-family:'Montserrat',sans-serif; font-size:.76rem; text-transform:uppercase; letter-spacing:1px; color:var(--turquesa); }
+  .destello-item p{ margin:4px 0 0; line-height:1.5; font-size:.98rem; }
+  .destello-imagen{
+    width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:18px; border:3px solid var(--negro);
+    margin-bottom:22px; background:#e9e8c4;
+  }
+  .destello-imagen.placeholder{
+    display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif;
+    font-size:.75rem; letter-spacing:1.5px; text-transform:uppercase; color:#8a8a5f; text-align:center; padding:20px;
+  }
+  .destello-acciones{ display:flex; gap:12px; flex-wrap:wrap; margin-top:22px; }
+  .btn-compartir{ padding:12px 22px; font-size:.85rem; }
+  .destello-share-nota{ font-family:'Montserrat',sans-serif; font-size:.72rem; color:#8a8a5f; margin-top:10px; }
+
+  .vacio{
+    text-align:center; padding:60px 20px; color:#6b6b62; font-family:'Montserrat',sans-serif;
+  }
+
+  @media (max-width:900px){
+    .destellos-grid{ grid-template-columns:1fr; }
+  }
+
+  footer{ background:var(--crema); padding:70px 8vw 34px; border-top:3px solid var(--negro); }
+  .footer-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:50px; margin-bottom:50px; }
+  .footer-logo{ height:54px; width:auto; margin-bottom:16px; }
+  footer p{ color:#4d4d47; font-size:.95rem; line-height:1.6; max-width:34ch; }
+  footer h4{ font-family:'Montserrat',sans-serif; font-size:.78rem; text-transform:uppercase; letter-spacing:1.5px; margin:0 0 16px; }
+  footer ul{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; }
+  footer a{ text-decoration:none; font-weight:500; font-size:.95rem; }
+  footer a:hover{ color:var(--fucsia); }
+  .footer-bottom{ border-top:2px solid rgba(29,29,27,.15); padding-top:24px; display:flex; justify-content:space-between; font-family:'Montserrat',sans-serif; font-size:.78rem; color:#6b6b62; flex-wrap:wrap; gap:10px; }
+  @media (max-width:980px){ .footer-grid{ grid-template-columns:1fr; gap:34px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo-nav">
+      <a href="index.html"><img src="logo.png" alt="Brilla & Crea"></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html#que-es">Qué es</a></li>
+      <li><a href="index.html#comunidad">Comunidad</a></li>
+      <li><a href="index.html#eventos">Eventos</a></li>
+      <li><a href="index.html#recursos">Recursos</a></li>
+      <li><a href="destellos.html" class="activo">Destello</a></li>
+      <li><a href="index.html#integrantes">Integrantes</a></li>
+      <li><a href="index.html#faq">Preguntas</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-fucsia" href="https://forms.gle/Xioj4iFq7XvxXEpS6" target="_blank" rel="noopener" style="padding:12px 24px; font-size:.9rem;">Únete a la comunidad</a>
+    </div>
+  </nav>
+</header>
+
+<section class="portada-destellos">
+  <div class="wrap">
+    <span class="eyebrow">Todas las entregas</span>
+    <h1>Destellos</h1>
+    <p>Cada viernes, una reflexión, una idea de contenido lista para grabar y una pregunta que te deja pensando. Aquí está el archivo completo.</p>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="destellos-grid" id="destellos-grid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img class="footer-logo" src="logo.png" alt="Brilla & Crea">
+        <p>Una comunidad para mujeres que quieren construir una marca personal auténtica y crecer sin dejar de ser ellas mismas.</p>
+      </div>
+      <div>
+        <h4>Explora</h4>
+        <ul>
+          <li><a href="index.html#que-es">Qué es Brilla &amp; Crea</a></li>
+          <li><a href="index.html#eventos">Eventos</a></li>
+          <li><a href="index.html#recursos">Recursos gratuitos</a></li>
+          <li><a href="destellos.html">Viernes de Destello</a></li>
+          <li><a href="index.html#faq">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Comunidad</h4>
+        <ul>
+          <li><a href="https://forms.gle/Xioj4iFq7XvxXEpS6" target="_blank" rel="noopener">Únete ahora</a></li>
+          <li><a href="https://instagram.com/comunidadbrillaycrea" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="index.html#integrantes">Integrantes</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Brilla &amp; Crea. Todos los derechos reservados.</span>
+      <span>Identidad de marca por Say Chan Design</span>
+    </div>
+  </div>
+</footer>
+
+<script src="destellos-data.js"></script>
+<script>
+  async function compartirDestello(imagenUrl, titulo, btn){
+    const cuentaIG = '@comunidadbrillaycrea';
+    const textoCompartir = `${titulo} ✨ Viernes de Destello — Brilla & Crea\nSíguenos: ${cuentaIG}`;
+    try{
+      const resp = await fetch(imagenUrl);
+      const blob = await resp.blob();
+      const file = new File([blob], imagenUrl.split('/').pop(), {type: blob.type || 'image/jpeg'});
+      if(navigator.canShare && navigator.canShare({files:[file]})){
+        await navigator.share({ files:[file], title: titulo, text: textoCompartir });
+        return;
+      }
+    }catch(err){ /* seguimos al fallback */ }
+
+    try{ await navigator.clipboard.writeText(textoCompartir); }catch(err){}
+    const a = document.createElement('a');
+    a.href = imagenUrl;
+    a.download = imagenUrl.split('/').pop();
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    if(btn){
+      const original = btn.textContent;
+      btn.textContent = 'Imagen descargada · texto copiado ✓';
+      setTimeout(()=>{ btn.textContent = original; }, 2600);
+    }
+  }
+
+  function destelloCardHTML(d){
+    const imagenHTML = d.imagen
+      ? `<img class="destello-imagen" src="${d.imagen}" alt="${d.titulo}">`
+      : `<div class="destello-imagen placeholder">Imagen del destello<br>próximamente</div>`;
+    return `
+      ${imagenHTML}
+      <span class="fecha">Viernes de destello ✨ ${d.fechaDisplay}</span>
+      <h3>${d.titulo}</h3>
+      <div class="destello-item">
+        <span class="label"><img src="estrella_turquesa.png" alt="" style="width:14px; height:14px;"> Reflexión</span>
+        ${d.reflexion.map(p=>`<p>${p}</p>`).join('')}
+      </div>
+      <div class="destello-item">
+        <span class="label"><img src="estrella_turquesa.png" alt="" style="width:14px; height:14px;"> Idea de contenido</span>
+        <p>${d.idea}</p>
+      </div>
+      <div class="destello-item" style="margin-bottom:0;">
+        <span class="label"><img src="estrella_turquesa.png" alt="" style="width:14px; height:14px;"> La Pregunta</span>
+        <p>${d.pregunta}</p>
+      </div>
+      ${d.imagen ? `
+      <div class="destello-acciones">
+        <button class="btn btn-fucsia btn-compartir" onclick="compartirDestello('${d.imagen}', '${d.titulo.replace(/'/g,"\\'")}', this)">
+          <img src="estrella_blanca.png" alt="" width="16" height="16">
+          Compartir
+        </button>
+      </div>
+      <p class="destello-share-nota">Se abre el menú de compartir de tu celular — elige Instagram y pégalo como historia. El texto con @comunidadbrillaycrea ya queda copiado para pegarlo.</p>` : ''}
+    `;
+  }
+
+  const grid = document.getElementById('destellos-grid');
+  if(typeof DESTELLOS !== 'undefined' && DESTELLOS.length){
+    const ordenados = [...DESTELLOS].sort((a,b)=> b.fecha.localeCompare(a.fecha));
+    grid.innerHTML = ordenados.map(d=>`<div class="destello-card">${destelloCardHTML(d)}</div>`).join('');
+  } else {
+    grid.innerHTML = '<p class="vacio">Todavía no hay Destellos publicados. ¡El primero está por llegar! ✨</p>';
+  }
+</script>
+</body>
+</html>

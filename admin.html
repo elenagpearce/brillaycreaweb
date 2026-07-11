@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin · Generador de Destellos</title>
+<link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=League+Spartan:wght@300;400;500;600;700;800&family=Montserrat:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --crema:#f3f2ba; --fucsia:#e00d5b; --naranja:#ffb719; --turquesa:#03cfcb; --negro:#1d1d1b; --blanco:#fffdf6;
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:#f4f4ec; color:var(--negro); font-family:'League Spartan',sans-serif; }
+  h1,h2,h3{ font-family:'Bubblegum Sans',cursive; font-weight:400; }
+  .wrap{ max-width:1100px; margin:0 auto; padding:50px 24px 100px; }
+  .aviso{
+    background:#fff3cd; border:2px solid #e8b923; border-radius:14px; padding:18px 22px; margin-bottom:36px;
+    font-family:'Montserrat',sans-serif; font-size:.88rem; line-height:1.6; color:#6b5300;
+  }
+  .aviso b{ display:block; margin-bottom:4px; font-size:.95rem;}
+
+  /* ---- CANDADO SIMPLE ---- */
+  #candado{
+    max-width:420px; margin:120px auto; background:#fff; border:3px solid var(--negro); border-radius:20px;
+    padding:36px; text-align:center; box-shadow:6px 6px 0 rgba(0,0,0,.1);
+  }
+  #candado input{
+    width:100%; padding:14px 16px; border-radius:10px; border:2px solid var(--negro); font-size:1rem; margin:18px 0;
+    font-family:'League Spartan',sans-serif;
+  }
+  #candado button, .btn{
+    background:var(--fucsia); color:var(--blanco); border:3px solid var(--negro); border-radius:999px;
+    padding:14px 30px; font-weight:700; font-size:1rem; cursor:pointer; font-family:'League Spartan',sans-serif;
+  }
+  #candado .error{ color:var(--fucsia); font-size:.85rem; font-family:'Montserrat',sans-serif; min-height:20px; }
+
+  #panel{ display:none; }
+
+  .grid{ display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:start; }
+  label{ display:block; font-family:'Montserrat',sans-serif; font-size:.75rem; text-transform:uppercase; letter-spacing:1px; font-weight:700; margin:20px 0 6px; color:#555; }
+  label:first-child{ margin-top:0; }
+  input[type=text], input[type=date], textarea{
+    width:100%; padding:12px 14px; border:2px solid #ccc; border-radius:10px; font-size:.95rem;
+    font-family:'League Spartan',sans-serif; resize:vertical;
+  }
+  input:focus, textarea:focus{ outline:none; border-color:var(--fucsia); }
+  textarea.corta{ min-height:60px; }
+  textarea.larga{ min-height:140px; }
+  .campo-imagen{
+    border:2px dashed #bbb; border-radius:14px; padding:20px; text-align:center; font-family:'Montserrat',sans-serif; font-size:.85rem; color:#777;
+  }
+  .campo-imagen img{ max-width:100%; max-height:260px; margin-top:14px; border-radius:10px; display:none; }
+
+  .preview-card{
+    background:#fff; border:3px solid var(--negro); border-radius:24px; padding:30px; position:sticky; top:30px;
+  }
+  .preview-card .fecha{ font-family:'Montserrat',sans-serif; font-size:.7rem; letter-spacing:2px; text-transform:uppercase; color:var(--fucsia); font-weight:700; }
+  .preview-card h3{ font-size:1.4rem; margin:8px 0 16px; }
+  .preview-item{ margin-bottom:14px; }
+  .preview-item .label{ font-weight:700; font-family:'Montserrat',sans-serif; font-size:.72rem; text-transform:uppercase; letter-spacing:1px; color:var(--turquesa); }
+  .preview-item p{ margin:4px 0 0; font-size:.92rem; line-height:1.5; }
+  .preview-imagen{ width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:14px; border:2px solid var(--negro); margin-bottom:16px; background:#eee; display:none; }
+
+  #salida{ margin-top:50px; }
+  #salida h2{ font-size:1.6rem; }
+  textarea#codigo{
+    width:100%; min-height:260px; font-family:'Menlo','Consolas',monospace; font-size:.82rem; background:#1d1d1b; color:#e9e8c4;
+    border-radius:14px; padding:20px; border:none; line-height:1.6;
+  }
+  .pasos{ background:#fff; border:2px solid #ddd; border-radius:14px; padding:24px 28px; margin-top:20px; font-family:'Montserrat',sans-serif; font-size:.88rem; line-height:1.8; color:#333; }
+  .pasos b{ color:var(--fucsia); }
+  .copiado{ color:#0a8a3f; font-weight:700; font-family:'Montserrat',sans-serif; font-size:.85rem; margin-left:12px; }
+  @media (max-width:880px){ .grid{ grid-template-columns:1fr; } .preview-card{ position:static; } }
+</style>
+</head>
+<body>
+
+<div id="candado">
+  <h2>🔒 Acceso admin</h2>
+  <p style="font-family:'Montserrat',sans-serif; font-size:.85rem; color:#666;">Solo para el equipo de Brilla &amp; Crea.</p>
+  <input type="text" id="clave" placeholder="Escribe la clave">
+  <div class="error" id="error-clave"></div>
+  <button onclick="verificarClave()">Entrar</button>
+</div>
+
+<div id="panel">
+  <div class="wrap">
+    <h1>Generador de Destellos</h1>
+    <div class="aviso">
+      <b>⚠️ Importante — cómo funciona realmente esta herramienta</b>
+      Este sitio es 100% estático (vive en GitHub Pages), no tiene servidor ni base de datos. Esta página
+      <b>no guarda nada por sí sola</b>: te ayuda a redactar y ordenar el contenido, y al final te da un bloque de
+      código para copiar y pegar tú misma en el archivo <code>destellos-data.js</code> del repositorio.
+      La imagen tampoco se sube desde aquí — la seleccionas solo para ver la vista previa, y por separado la subes
+      a la carpeta <code>/destellos/</code> del repositorio con el mismo nombre que escribas abajo.
+      <br><br>
+      Esta clave de acceso es solo un filtro simple para que no cualquiera que llegue a esta URL la use —
+      <b>no es seguridad real</b> (cualquiera que vea el código fuente podría encontrarla). No compartas este link públicamente
+      y no lo enlaces desde el menú del sitio.
+    </div>
+
+    <div class="grid">
+      <div>
+        <label>Fecha</label>
+        <input type="date" id="f-fecha">
+
+        <label>Título del Destello</label>
+        <input type="text" id="f-titulo" placeholder="Ej. Ahí está tu contenido. Siempre ha estado ahí">
+
+        <label>Nombre de archivo de la imagen</label>
+        <input type="text" id="f-nombre-archivo" placeholder="Ej. destellos/2026-07-10.jpg">
+
+        <label>Imagen (solo para vista previa aquí)</label>
+        <div class="campo-imagen">
+          <input type="file" id="f-imagen" accept="image/*">
+          <img id="preview-img-tag">
+        </div>
+
+        <label>Reflexión (un párrafo por línea)</label>
+        <textarea id="f-reflexion" class="larga" placeholder="Escribe uno o varios párrafos. Cada línea nueva será un párrafo distinto."></textarea>
+
+        <label>Idea de contenido</label>
+        <textarea id="f-idea" class="corta"></textarea>
+
+        <label>La Pregunta</label>
+        <textarea id="f-pregunta" class="corta"></textarea>
+
+        <div style="margin-top:30px;">
+          <button class="btn" onclick="generar()">✨ Generar código</button>
+        </div>
+      </div>
+
+      <div class="preview-card">
+        <span class="eyebrow" style="font-family:'Montserrat',sans-serif; font-size:.7rem; text-transform:uppercase; letter-spacing:2px; color:#999; font-weight:700;">Vista previa</span>
+        <img class="preview-imagen" id="preview-imagen-grande">
+        <div class="fecha" id="pv-fecha">Viernes de destello ✨ —</div>
+        <h3 id="pv-titulo">Título del destello</h3>
+        <div class="preview-item">
+          <span class="label">✦ Reflexión</span>
+          <div id="pv-reflexion"><p style="color:#aaa;">Aquí aparecerá tu texto…</p></div>
+        </div>
+        <div class="preview-item">
+          <span class="label">✦ Idea de contenido</span>
+          <p id="pv-idea" style="color:#aaa;">Aquí aparecerá tu texto…</p>
+        </div>
+        <div class="preview-item" style="margin-bottom:0;">
+          <span class="label">✦ La Pregunta</span>
+          <p id="pv-pregunta" style="color:#aaa;">Aquí aparecerá tu texto…</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="salida" style="display:none;">
+      <h2>Tu código, listo para pegar</h2>
+      <div class="pasos">
+        1. Copia el bloque de abajo completo (con el botón).<br>
+        2. Abre <code>destellos-data.js</code> en tu repositorio de GitHub.<br>
+        3. Pégalo <b>justo después de</b> <code>const DESTELLOS = [</code> (antes de la entrada que ya exista), seguido de una coma si hay más entradas abajo.<br>
+        4. Sube tu imagen a <code>/destellos/</code> con el nombre exacto que escribiste arriba.<br>
+        5. Guarda los cambios (commit) en GitHub. Listo — ya aparece en tu sitio.
+      </div>
+      <div style="margin-top:20px;">
+        <button class="btn" onclick="copiarCodigo()">📋 Copiar código</button>
+        <span class="copiado" id="copiado-msg" style="display:none;">¡Copiado!</span>
+      </div>
+      <textarea id="codigo" readonly style="margin-top:16px;"></textarea>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ---- CANDADO SIMPLE (NO es seguridad real, solo un filtro básico) ----
+  const CLAVE_ADMIN = "brillaycrea2026"; // cámbiala por la que quieras
+  function verificarClave(){
+    const val = document.getElementById('clave').value.trim();
+    if(val === CLAVE_ADMIN){
+      document.getElementById('candado').style.display = 'none';
+      document.getElementById('panel').style.display = 'block';
+    } else {
+      document.getElementById('error-clave').textContent = 'Clave incorrecta, intenta de nuevo.';
+    }
+  }
+  document.getElementById('clave').addEventListener('keydown', e=>{
+    if(e.key === 'Enter') verificarClave();
+  });
+
+  // ---- VISTA PREVIA EN VIVO ----
+  const $ = id => document.getElementById(id);
+
+  function actualizarPreview(){
+    const fecha = $('f-fecha').value;
+    const fechaDisplay = fecha ? new Date(fecha+'T12:00:00').toLocaleDateString('es-MX', {day:'numeric', month:'long', year:'numeric'}) : '—';
+    $('pv-fecha').textContent = 'Viernes de destello ✨ ' + fechaDisplay;
+    $('pv-titulo').textContent = $('f-titulo').value || 'Título del destello';
+
+    const parrafos = $('f-reflexion').value.split('\n').map(s=>s.trim()).filter(Boolean);
+    $('pv-reflexion').innerHTML = parrafos.length
+      ? parrafos.map(p=>`<p>${p}</p>`).join('')
+      : '<p style="color:#aaa;">Aquí aparecerá tu texto…</p>';
+
+    $('pv-idea').textContent = $('f-idea').value || 'Aquí aparecerá tu texto…';
+    $('pv-idea').style.color = $('f-idea').value ? 'inherit' : '#aaa';
+    $('pv-pregunta').textContent = $('f-pregunta').value || 'Aquí aparecerá tu texto…';
+    $('pv-pregunta').style.color = $('f-pregunta').value ? 'inherit' : '#aaa';
+  }
+  ['f-fecha','f-titulo','f-reflexion','f-idea','f-pregunta'].forEach(id=>{
+    $(id).addEventListener('input', actualizarPreview);
+  });
+
+  $('f-imagen').addEventListener('change', e=>{
+    const file = e.target.files[0];
+    if(!file) return;
+    const url = URL.createObjectURL(file);
+    $('preview-img-tag').src = url;
+    $('preview-img-tag').style.display = 'block';
+    $('preview-imagen-grande').src = url;
+    $('preview-imagen-grande').style.display = 'block';
+  });
+
+  // ---- GENERAR CODIGO ----
+  function generar(){
+    const fecha = $('f-fecha').value;
+    if(!fecha || !$('f-titulo').value.trim()){
+      alert('Como mínimo pon la fecha y el título antes de generar el código.');
+      return;
+    }
+    const fechaDisplay = new Date(fecha+'T12:00:00').toLocaleDateString('es-MX', {day:'numeric', month:'long', year:'numeric'});
+    const nombreArchivo = $('f-nombre-archivo').value.trim() || `destellos/${fecha}.jpg`;
+    const parrafos = $('f-reflexion').value.split('\n').map(s=>s.trim()).filter(Boolean);
+
+    const escapar = s => s.replace(/\\/g,'\\\\').replace(/"/g,'\\"');
+
+    const bloque =
+`  {
+    fecha: "${fecha}",
+    fechaDisplay: "${fechaDisplay}",
+    imagen: "${escapar(nombreArchivo)}",
+    titulo: "${escapar($('f-titulo').value.trim())}",
+    reflexion: [
+${parrafos.map(p=>`      "${escapar(p)}"`).join(',\n')}
+    ],
+    idea: "${escapar($('f-idea').value.trim())}",
+    pregunta: "${escapar($('f-pregunta').value.trim())}"
+  },`;
+
+    $('codigo').value = bloque;
+    $('salida').style.display = 'block';
+    $('salida').scrollIntoView({behavior:'smooth'});
+  }
+
+  function copiarCodigo(){
+    $('codigo').select();
+    navigator.clipboard.writeText($('codigo').value).then(()=>{
+      $('copiado-msg').style.display = 'inline';
+      setTimeout(()=> $('copiado-msg').style.display = 'none', 2000);
+    });
+  }
+</script>
+</body>
+</html>
