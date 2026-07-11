@@ -289,6 +289,13 @@
     background:var(--crema); border:2px solid var(--negro); border-radius:999px; padding:5px 14px;
     font-size:.76rem; font-weight:600; font-family:'Montserrat',sans-serif;
   }
+  .integrante-insta{
+    display:inline-flex; align-items:center; gap:8px; margin-top:18px; text-decoration:none;
+    font-family:'Montserrat',sans-serif; font-weight:700; font-size:.85rem; color:var(--negro);
+    padding-top:16px; border-top:2px solid #eee;
+  }
+  .integrante-insta:hover{ color:var(--fucsia); }
+  .integrante-insta svg{ flex:none; width:20px; height:20px; }
 
   /* ---------- SECCION 9: FAQ ---------- */
   .faq-section{ background:var(--negro); color:var(--crema); }
@@ -678,11 +685,14 @@
 
   // ---- SECCION 8: INTEGRANTES ----
   const integrantes = [
-    {nombre:"Elena Peña", rol:"Creadora de contenido + Asesora de Marca Personal + Emprendedora", bio:"Ayudo a mujeres a descubrir quiénes son, comunicar el valor de lo que hacen y construir proyectos auténticos y sostenibles.", servicios:["Sesiones 1:1","Sesiones grupales","Talleres"], color:"#e00d5b"},
-    {nombre:"Juli Castro", rol:"Creadora de contenido + Storyteller + Creadora de El Universo de Juli", bio:"Comparto historias y reflexiones que inspiran a las personas a volver a creer en sus sueños, mientras documento mi vida, los viajes, el deporte, el crecimiento personal y los pequeños momentos que nos transforman.", servicios:["En progreso..."],color:"#03cfcb"},
-    {nombre:"Alondra", rol:"Creadora de contenido", bio:"En progreso...", servicios:["En progreso..."], color:"#ffb719"},
-    {nombre:"Monse", rol:"Creadora de contenido", bio:"En progreso...", servicios:["En progreso..."], color:"#ffb719"}
+    {nombre:"Elena Peña", rol:"Creadora de contenido + Asesora de Marca Personal + Emprendedora", bio:"Ayudo a mujeres a descubrir quiénes son, comunicar el valor de lo que hacen y construir proyectos auténticos y sostenibles.", servicios:["Sesiones 1:1","Sesiones grupales","Talleres"], color:"#e00d5b", instagram:"elenapenaarce"},
+    {nombre:"Juli Castro", rol:"Creadora de contenido + Storyteller + Creadora de El Universo de Juli", bio:"Comparto historias y reflexiones que inspiran a las personas a volver a creer en sus sueños, mientras documento mi vida, los viajes, el deporte, el crecimiento personal y los pequeños momentos que nos transforman.", servicios:["En progreso..."],color:"#03cfcb", instagram:""},
+    {nombre:"Alondra", rol:"Creadora de contenido", bio:"En progreso...", servicios:["En progreso..."], color:"#ffb719", instagram:""},
+    {nombre:"Monse", rol:"Creadora de contenido", bio:"En progreso...", servicios:["En progreso..."], color:"#ffb719", instagram:""}
   ];
+  function instaIconSVG(){
+    return `<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2c2.7 0 3.05.01 4.12.06 1.07.05 1.79.22 2.43.46.66.26 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.24.64.41 1.36.46 2.43.05 1.07.06 1.42.06 4.12s-.01 3.05-.06 4.12c-.05 1.07-.22 1.79-.46 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.64.24-1.36.41-2.43.46-1.07.05-1.42.06-4.12.06s-3.05-.01-4.12-.06c-1.07-.05-1.79-.22-2.43-.46a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.24-.64-.41-1.36-.46-2.43C2.01 15.05 2 14.7 2 12s.01-3.05.06-4.12c.05-1.07.22-1.79.46-2.43.26-.66.6-1.22 1.15-1.77A4.9 4.9 0 0 1 5.44 2.53c.64-.24 1.36-.41 2.43-.46C8.95 2.01 9.3 2 12 2Zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4ZM17.3 6a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z"/></svg>`;
+  }
   document.getElementById('integrantes-grid').innerHTML = integrantes.map(i=>`
     <div class="integrante-card">
       <div class="avatar" style="background:${i.color};">${i.nombre.split(' ').map(n=>n[0]).join('')}</div>
@@ -690,6 +700,7 @@
       <span class="integrante-rol">${i.rol}</span>
       <p>${i.bio}</p>
       <div class="servicios">${i.servicios.map(s=>`<span class="servicio-chip">${s}</span>`).join('')}</div>
+      ${i.instagram ? `<a class="integrante-insta" href="https://instagram.com/${i.instagram}" target="_blank" rel="noopener">${instaIconSVG()} @${i.instagram}</a>` : ''}
     </div>`).join('');
 
   // ---- SECCION 9: FAQ ----
