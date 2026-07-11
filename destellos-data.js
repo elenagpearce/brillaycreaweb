@@ -37,5 +37,22 @@ const DESTELLOS = [
     ],
     idea: "Piensa en algo que hiciste esta semana en tu trabajo o en tu vida que te pareció completamente normal. Graba un video explicándolo como si se lo contaras a alguien que apenas empieza. Hook: “Esto que hago todos los días quizás no es tan obvio como crees…”",
     pregunta: "¿Qué parte de tu experiencia o conocimiento has descartado como contenido porque creías que era demasiado obvio o sencillo?"
-  }
+  },
+    {
+    fecha: "2026-07-10",
+    fechaDisplay: "10 de julio de 2026",
+    imagen: "destello20260710",
+    titulo: "No tienes que reinventarte",
+    reflexion: [
+      "Nadie nos dijo que emprender en estos tiempos incluía tener que crear contenido.",
+      "Porque la realidad es que los negocios que no están activos en redes poco a poco están siendo olvidados. Ahora ya no basta con dar un buen servicio o ofrecer un buen producto, si quieres que tu negocio crezca, necesitas estar en redes sociales. Grabar, publicar, crear contenido.",
+      "Y nadie nos preparó para eso.",
+      "Seguramente te has sentido frustrada y sobrepasada, sin ideas de contenido, scroleando sin fin en búsqueda de ideas, y quizá no te has dado cuenta que ya tienes todo el contenido que necesitas.",
+      "No necesitas hacer siempre videos superelaborados o estar en las tendencias del momento. A veces solo necesitas contar lo que ya vives. Cómo llegaste hasta donde estás. Por qué decidiste emprender en esto. Qué aprendes, cómo se ve un día real en tu negocio. Los procesos detrás de lo que haces. Las decisiones que tomas y por qué.",
+      "Todo eso es contenido. Y es valioso precisamente porque es tuyo, porque nadie más puede contarlo exactamente como tú.",
+      "No tienes que reinventarte para crear contenido. Solo tienes que compartir lo que ya eres. ✨"
+    ],
+    idea: "Graba un video contando a qué te dedicas y por qué lo haces. No el discurso formal, sino la razón real que te mueve todos los días. Hook: “Me dedico a esto y la razón por la que lo hago es…”",
+    pregunta: "¿Cómo te has sentido en este proceso de aprender a crear contenido siendo experta en algo completamente diferente? ¿Qué ha sido lo más retador?"
+  },
 ];
