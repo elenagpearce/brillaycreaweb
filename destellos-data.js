@@ -41,7 +41,7 @@ const DESTELLOS = [
     {
     fecha: "2026-07-10",
     fechaDisplay: "10 de julio de 2026",
-    imagen: "destello20260710",
+    imagen: "destello20260710.jpeg",
     titulo: "No tienes que reinventarte",
     reflexion: [
       "Nadie nos dijo que emprender en estos tiempos incluía tener que crear contenido.",
