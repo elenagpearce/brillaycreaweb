@@ -23,6 +23,22 @@
 
 const DESTELLOS = [
   {
+    fecha: "2026-07-17",
+    fechaDisplay: "17 de julio de 2026",
+    imagen: "destello20260717.jpeg",
+    titulo: "El miedo a crecer es tan real como el miedo a empezar",
+    reflexion: [
+      "Hay algo curioso que pasa cuando empiezas a ver resultados en tu contenido.",
+      "Un video que de repente llega a más personas. Comentarios de gente que no conoces. Seguidores nuevos que llegaron solos. Y en lugar de celebrarlo y seguir, algo dentro de ti frena.",
+      "¿Y si no puedo mantener esto? ¿Y si el siguiente video no es tan bueno? ¿Y si la gente espera demasiado de mí ahora?",
+      "El miedo a crecer es tan real como el miedo a empezar. Solo que nadie habla de él porque se supone que el crecimiento es lo que queremos. Y sí, lo queremos. Pero también nos descoloca. Nos saca de la zona donde nos sentíamos seguras, donde nadie nos veía demasiado, donde el riesgo de decepcionar era pequeño.",
+      "Pero crecer no significa que ahora tienes que ser perfecta. Significa que más personas encontraron valor en lo que compartes. Y eso no es una presión, es una confirmación de que vas por buen camino.",
+      "No te sabotees justo cuando las cosas empiezan a funcionar. Ese momento en que sientes que algo está creciendo es exactamente el momento de seguir, no de esconderte. ✨"
+    ],
+    idea: "Graba un video compartiendo algo que te sorprendió de tu proceso de crear contenido. Algo que no esperabas encontrar en el camino. Hook: “Esto es lo que nadie me dijo que iba a sentir cuando empecé a crear contenido…”",
+    pregunta: "¿Alguna vez has sentido el impulso de frenar justo cuando algo empieza a funcionar? ¿Qué crees que hay detrás de ese freno?"
+  },
+  {
     fecha: "2026-07-03",
     fechaDisplay: "3 de julio 2026",
     imagen: "destellos/destello20260703.jpeg",
