@@ -25,7 +25,7 @@ const DESTELLOS = [
   {
     fecha: "2026-07-17",
     fechaDisplay: "17 de julio de 2026",
-    imagen: "destello20260717.jpeg",
+    imagen: "destellos/destello20260717.jpeg",
     titulo: "El miedo a crecer es tan real como el miedo a empezar",
     reflexion: [
       "Hay algo curioso que pasa cuando empiezas a ver resultados en tu contenido.",
