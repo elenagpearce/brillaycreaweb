@@ -23,6 +23,25 @@
 
 const DESTELLOS = [
   {
+    fecha: "2026-11-13",
+    fechaDisplay: "13 de noviembre de 2026",
+    imagen: "destellos/destello20261113.jpeg",
+    titulo: "Gracias por traerme hasta aquí",
+    reflexion: [
+      "¿Cuándo fue la última vez que te detuviste a agradecerte por todo lo que has hecho este año?",
+      "Estamos llegando a esa época en la que empezamos a hacer cuentas. Revisamos las metas que cumplimos, las que dejamos a medias y todas esas cosas que dijimos que haríamos y todavía no suceden.",
+      "Pero pocas veces hacemos un balance de todo lo que nos costó llegar hasta aquí.",
+      "De las decisiones que tomamos sin saber qué iba a pasar. De las veces que tuvimos que cambiar de planes. De los momentos difíciles que atravesamos y también de todas esas pequeñas cosas que nos hicieron felices.",
+      "Porque este año no solo se trata de lo que lograste o de lo que quedó pendiente.",
+      "También se trata de lo que viviste, de las personas que conociste, de lo que aprendiste sobre ti y de las veces que encontraste la manera de seguir adelante.",
+      "Y no, no tienes que encontrarle el lado positivo a todo lo que pasó. Hay cosas que simplemente fueron difíciles y también merecen ser reconocidas.",
+      "Antes de empezar a pensar en todo lo que quieres hacer el próximo año, date un momento para mirar a la persona que has sido durante este.",
+      "Quizás tienes mucho más que agradecerte de lo que imaginas. ✨"
+    ],
+    idea: "Graba un video corto, hablando a cámara o utilizando clips de diferentes momentos de tu año, y comparte algunas cosas que te gustaría agradecerte. No tienen que ser grandes logros. Puedes agradecerte por una decisión que tomaste, algo que te atreviste a intentar, una situación que enfrentaste o simplemente por haber estado presente para ti en un momento difícil. Hook: “Antes de que termine el año, quiero agradecerme por…” Puedes terminar tu video con una frase como: “Gracias por todo lo que hiciste para traerme hasta aquí”.",
+    pregunta: "Si hoy pudieras agradecerle algo a la persona que has sido durante estos meses, ¿qué le dirías?"
+  },
+  {
     fecha: "2026-07-17",
     fechaDisplay: "17 de julio de 2026",
     imagen: "destellos/destello20260717.jpeg",
